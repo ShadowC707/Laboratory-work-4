@@ -40,8 +40,8 @@ public class Salad implements Serializable {
     // --- Основні методи для роботи з салатом ---
 
     // Метод для обчислення загальної калорійності салату
-    // Може викинути виняток EmptySaladException, якщо салат порожній
     public int getTotalCalories() throws EmptySaladException {
+
         // Перевіряємо, чи список інгредієнтів не порожній
         if(this.ingredients.isEmpty()){
             // Якщо список порожній, генеруємо та кидаємо виняток з відповідним повідомленням
@@ -49,6 +49,7 @@ public class Salad implements Serializable {
         }
         // Ініціалізація акумулятора (змінної для підсумовування) для загальної калорійності
         int total = 0;
+
         // Цикл 'for-each' для перебору кожного овоча (v) у списку ingredients
         for (Vegetable v : ingredients) {
             // Додаємо калорійність поточного овоча до загальної суми
@@ -65,21 +66,21 @@ public class Salad implements Serializable {
     }
 
     // Метод для сортування інгредієнтів за калорійністю (від меншої до більшої)
-    // Може викинути виняток EmptySaladException, якщо салат порожній
     public void sortIngredientsByCalories() throws  EmptySaladException{
+
         // Перевіряємо, чи список інгредієнтів не порожній
         if(this.ingredients.isEmpty()){
             // Якщо так, генеруємо виняток
             throw new EmptySaladException("Cannot sort ingredients, because salad is empty!");
         }
+
         // Виклик статичного методу sort з класу Collections для сортування списку 'ingredients'
-        // Сортування відбувається на основі реалізації методу compareTo у класі Vegetable
         Collections.sort(ingredients);
     }
 
     // Метод для пошуку інгредієнтів, калорійність яких знаходиться у заданому діапазоні
-    // Може викинути виняток EmptySaladException
     public List<Vegetable> findIngredientsByCalorieRange(int min, int max) throws EmptySaladException {
+
         // Перевірка на наявність інгредієнтів у салаті
         if(this.ingredients.isEmpty()) {
             // Якщо інгредієнтів немає, кидаємо виняток
@@ -88,6 +89,7 @@ public class Salad implements Serializable {
 
         // Створення нового порожнього списку для зберігання результатів пошуку
         List<Vegetable> result = new ArrayList<>();
+
         // Ітерація по кожному овочу в списку інгредієнтів
         for (Vegetable v : ingredients) {
             // Перевіряємо, чи калорійність поточного овоча (v) входить у заданий діапазон [min, max]
@@ -96,12 +98,12 @@ public class Salad implements Serializable {
                 result.add(v);
             }
         }
+
         // Повертаємо список знайдених інгредієнтів
         return result;
     }
 
     // Метод для виведення списку інгредієнтів салату на консоль
-    // Може викинути виняток EmptySaladException, якщо салат порожній
     public void displayIngredients() throws EmptySaladException {
         // Перевіряємо, чи є в салаті інгредієнти
         if(this.ingredients.isEmpty()) {

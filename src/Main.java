@@ -15,13 +15,11 @@ import java.util.Scanner;
 
 // --- Головний клас програми ---
 public class Main {
-    // 'final' - що посилання на нього не можна змінити
     private static final Scanner scanner = new Scanner(System.in);
 
     // Стала для візуального розділення блоків у консолі для кращої читабельності
     private static final String LINE = "-----------------------------------";
 
-    // --- Точка входу в програму ---
     public static void main(String[] args) {
         // Вітальне повідомлення для користувача
         System.out.println("Welcome to the Vegetable Calculator");
@@ -118,6 +116,7 @@ public class Main {
     public static void viewIngredients(Salad salad) {
         System.out.println(LINE); // Візуальний розділювач
         System.out.println("Ingredients of " + salad.getName() + " salad:");
+
         try {
             // Намагаємося викликати метод для відображення інгредієнтів
             salad.displayIngredients();
@@ -147,6 +146,7 @@ public class Main {
             scanner.nextLine(); // Очищуємо буфер
 
             Vegetable vegetable; // Оголошення змінної для зберігання створеного овоча
+
             // Оператор switch для створення об'єкта відповідного класу залежно від введеної назви
             switch (name.toLowerCase()) {
                 case "onion":
@@ -182,6 +182,7 @@ public class Main {
     // Метод для видалення інгредієнта з салату
     public static void removeIngredient(Salad salad) {
         System.out.println(LINE);
+
         // Перевірка, чи салат не порожній
         if (salad.getIngredients().isEmpty()) {
             System.out.println("The salad is already empty. Nothing to remove.");
@@ -218,7 +219,7 @@ public class Main {
 
     // Метод для збереження об'єкта Salad у файл за допомогою серіалізації
     public static void saveToFile(Salad salad) throws IOException {
-        // Використання try-with-resources, що автоматично закриває потоки після завершення
+        // Використання try-with, що автоматично закриває потоки після завершення
         try (FileOutputStream fileOutput = new FileOutputStream("salad.ser");
              ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput)) {
             System.out.println("Saving salad to salad.ser...");
@@ -230,7 +231,7 @@ public class Main {
 
     // Метод для завантаження (десеріалізації) об'єкта Salad з файлу
     public static Salad loadFromFile(String currentSaladName) throws IOException, ClassNotFoundException {
-        // Використання try-with-resources для автоматичного закриття потоків
+        // Використання try-with для автоматичного закриття потоків
         try (FileInputStream fileInput = new FileInputStream("salad.ser");
              ObjectInputStream objectInput = new ObjectInputStream(fileInput)) {
             // Зчитування об'єкта з файлу та приведення його до типу Salad

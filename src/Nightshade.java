@@ -20,12 +20,10 @@ public abstract class Nightshade extends Vegetable {
         this.growthHabit = growthHabit;
     }
 
-    // --- Гетер для доступу до поля класу ---
-    // (Сетер відсутній, оскільки передбачається, що тип росту є незмінною характеристикою)
-
     // Метод (гетер) для отримання типу росту
     public GrowthType getGrowthHabit() {
         // Повертаємо значення поля growthHabit
         return growthHabit;
     }
+    // (Сетер відсутній, оскільки передбачається, що тип росту є незмінною характеристикою)
 }
