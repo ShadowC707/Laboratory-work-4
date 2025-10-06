@@ -1,8 +1,8 @@
-public class EmptySaladException extends RuntimeException {
+public class NoSuchIngredientException extends RuntimeException {
     // Конструктор класу, що приймає повідомлення про помилку
-    public EmptySaladException(String message) {
+    public NoSuchIngredientException(String message) {
         // Виклик конструктора батьківського класу (RuntimeException)
-        // для збереження та передачі повідомлення про помилку
+        // для ініціалізації повідомлення про помилку
         super(message);
     }
 }
